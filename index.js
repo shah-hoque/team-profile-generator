@@ -25,3 +25,45 @@ const render = require("./page-template.js");
 
 // FILE CONFIGURATION (end) --------------------------------
 
+// Array to hold all employee objects
+const employees = [];
+
+// Function to add a manager to the array
+async function addManager() {
+  const managerAnswers = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the team manager's name?",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "What is the team manager's employee ID?",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "What is the team manager's email address?",
+      name: "email",
+    },
+    {
+      type: "input",
+      message: "What is the team manager's office number?",
+      name: "officeNumber",
+    },
+  ]);
+
+  // new instance of the Manager class with the manager's answers
+  const manager = new Manager(
+    managerAnswers.name,
+    managerAnswers.id,
+    managerAnswers.email,
+    managerAnswers.officeNumber
+  );
+
+  employees.push(manager);
+
+  // console.log(manager);
+  console.log("Manager added!");
+
+}
