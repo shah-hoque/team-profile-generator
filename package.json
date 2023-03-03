@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/shah-hoque/team-profile-generator#readme",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^6.5.2"
   },
   "devDependencies": {
     "jest": "^29.4.3"
