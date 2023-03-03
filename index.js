@@ -7,27 +7,10 @@ const path = require("path");
 const fs = require("fs");
 
 // afp = absolute file path
+
 // set the afp of the 'output' dir, using the current module 'index.js' dir path as the starting point
 const outputDir = path.resolve(__dirname, "output");
 // set the afp of a new file 'team.html' inside the 'output' dir
 const outputPath = path.join(outputDir, "team.html");
 
 const render = require("./page-template.js");
-
-// const askQuestions = () => {
-//   inquirer.prompt([
-//       {
-//           name: "title",
-//           message: "What is the title of your application? \n",
-//           type:"input",
-      
-//       },
-//   ]).then(answers => {
-//       // pass into this promise func the type of file to create & its file content
-  
-//       console.log(answers)
-
-//   }).catch((err) => console.error(err));
-// };
-
-// askQuestions()
