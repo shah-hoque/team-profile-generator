@@ -73,6 +73,62 @@ async function addManager() {
 }
 
 
+// Function to add an engineer to the array
+async function addEngineer() {
+  const engineerAnswers = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the engineer's name?",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "What is the engineer's employee ID?",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "What is the engineer's email address?",
+      name: "email",
+    },
+    {
+      type: "input",
+      message: "What is the engineer's GitHub username?",
+      name: "github",
+    },
+  ]);
+
+  const engineer = new Engineer(
+    engineerAnswers.name,
+    engineerAnswers.id,
+    engineerAnswers.email,
+    engineerAnswers.github
+  );
+
+  employees.push(engineer);
+
+  console.log("Engineer added!");
+
+  await addOtherEmployee();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to display the addOtherEmployee of options
 async function addOtherEmployee() {
   const answer = await inquirer.prompt([
