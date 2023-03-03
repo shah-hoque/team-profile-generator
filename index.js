@@ -21,6 +21,7 @@ if (!fs.existsSync(outputDir)) {
 // set the afp of a new file 'team.html' inside the 'generated-html' dir
 const outputPath = path.join(outputDir, "team.html");
 
+// imports the page-template.html module, which exports a func that takes an array of employee objects and returns an HTML string
 const render = require("./page-template.js");
 
 // FILE CONFIGURATION (end) --------------------------------
@@ -61,9 +62,52 @@ async function addManager() {
     managerAnswers.officeNumber
   );
 
+  // add manager object to the array
   employees.push(manager);
 
   // console.log(manager);
   console.log("Manager added!");
 
+  // calls the addOtherEmployee func to display the option to add another employee
+  await addOtherEmployee();
 }
+
+
+// Function to display the addOtherEmployee of options
+async function addOtherEmployee() {
+  const answer = await inquirer.prompt([
+    {
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "Add an engineer",
+        "Add an intern",
+        "Finish building the team",
+      ],
+      name: "choice",
+    },
+  ]);
+
+  switch (answer.choice) {
+    case "Add an engineer":
+      await addEngineer();
+      break;
+    case "Add an intern":
+      await addIntern();
+      break;
+
+      // generates the HTML file using the render function and fs.writeFile method
+    case "Finish building the team":
+      // store the html string in a html var
+      const html = render(employees);
+      // write the html string to a file in the generated-html dir
+      fs.writeFile(outputPath, html, (err) => {
+        if (err) throw err;
+        console.log("Team HTML file generated successfully!");
+      });
+      break;
+  }
+}
+
+
+addManager();
