@@ -6,9 +6,10 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-// set the absolute file path of the 'output' dir, using the current module 'index.js' dir path as the starting point
+// afp = absolute file path
+// set the afp of the 'output' dir, using the current module 'index.js' dir path as the starting point
 const outputDir = path.resolve(__dirname, "output");
-// set the absolute file path of a new file 'team.html' inside the 'output' dir
+// set the afp of a new file 'team.html' inside the 'output' dir
 const outputPath = path.join(outputDir, "team.html");
 
 const render = require("./page-template.js");
