@@ -16,7 +16,7 @@ const employees = [];
 // set the afp of the 'generated-html' dir, using the current module 'index.js' dir path as the starting point
 const outputDir = path.resolve(__dirname, "generated-html");
 
-// check if the 'generated-html' dir exists, and create it if it does not
+// create the 'generated-html' dir if it does not exist
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }
@@ -29,6 +29,8 @@ const render = require("./page-template.js");
 
 // FILE CONFIGURATION (end) --------------------------------
 
+
+// ASYNC FUNCTIONS --------------------------------
 
 // FUNC) THAT ADDS MANAGER ANSWERS TO ARRAY
 async function addManager() {
@@ -189,8 +191,9 @@ async function addOtherEmployee() {
       break;
   }
 }
+// ASYNC FUNCTIONS (end) --------------------------------
 
 
-// Welcome message and call addManager to start the application
+// welcome message and call addManager to start the application
 console.log("Welcome to the Team Profile Generator!");
 addManager();
