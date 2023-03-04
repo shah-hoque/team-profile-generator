@@ -6,6 +6,9 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// Array to hold all employee objects
+const employees = [];
+
 // FILE CONFIGURATION --------------------------------
 
 // afp = absolute file path
@@ -26,10 +29,8 @@ const render = require("./page-template.js");
 
 // FILE CONFIGURATION (end) --------------------------------
 
-// Array to hold all employee objects
-const employees = [];
 
-// Function to add a manager to the array
+// FUNC) THAT ADDS MANAGER ANSWERS TO ARRAY
 async function addManager() {
   const managerAnswers = await inquirer.prompt([
     {
@@ -73,7 +74,7 @@ async function addManager() {
 }
 
 
-// Function to add an engineer to the array
+// FUNC) THAT ADDS ENGINEER ANSWERS TO ARRAY
 async function addEngineer() {
   const engineerAnswers = await inquirer.prompt([
     {
@@ -113,7 +114,7 @@ async function addEngineer() {
 }
 
 
-// Function to add an intern to the array
+// FUNC) THAT ADDS INTERN ANSWERS TO ARRAY
 async function addIntern() {
   const internAnswers = await inquirer.prompt([
     {
@@ -153,21 +154,7 @@ async function addIntern() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Function to display the addOtherEmployee of options
+// FUNC) THAT DISPLAYS THE addOtherEmployee CHOICES / WRITES HTML TO FILE
 async function addOtherEmployee() {
   const answer = await inquirer.prompt([
     {
@@ -204,4 +191,6 @@ async function addOtherEmployee() {
 }
 
 
+// Welcome message and call addManager to start the application
+console.log("Welcome to the Team Profile Generator!");
 addManager();
