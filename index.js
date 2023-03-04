@@ -113,6 +113,44 @@ async function addEngineer() {
 }
 
 
+// Function to add an intern to the array
+async function addIntern() {
+  const internAnswers = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the intern's name?",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "What is the intern's employee ID?",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "What is the intern's email address?",
+      name: "email",
+    },
+    {
+      type: "input",
+      message: "What is the intern's school?",
+      name: "school",
+    },
+  ]);
+
+  const intern = new Intern(
+    internAnswers.name,
+    internAnswers.id,
+    internAnswers.email,
+    internAnswers.school
+  );
+
+  employees.push(intern);
+
+  console.log("Intern added!");
+
+  await addOtherEmployee();
+}
 
 
 
